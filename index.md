@@ -17,12 +17,9 @@ Using data, technology, and all of our senses -- especially sound -- to engage c
     <button class="new-quote-btn" onclick="randomizeManifesto()">I want another one:)</button>
   </div>
 </div>
-# Resonate Data Lab
+We explore how to use data as a creative material. Our lab draws from the traditions of human-computer interaction, design, data science, data visualization, and critical computing.  
 
-The **Resonate Data Lab** explores how to use data as a creative material. Our lab draws from the traditions of human-computer interaction, design, data science, data visualization, and critical computing.  
-
-
-## Our Approach to Data
+#### Our Approach to Data
 
 - We use **all of our senses** — sight, smell, touch, taste, and especially sound — to engage with data in new ways.  
 - We consider how we can encounter different kinds of data (from the personal to the environmental to the technological) in **social contexts**.  
@@ -30,7 +27,7 @@ The **Resonate Data Lab** explores how to use data as a creative material. Our l
 - We value the **experiences** that emerge from working with data as much as the artifacts that we create from data.  
 
 
-## Get Involved
+#### Get Involved
 
 Interested in learning more about our lab or joining our team?  
 Email [Jordan Wirfs-Brock](mailto:wirfsbrj@whitman.edu).  
