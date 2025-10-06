@@ -17,3 +17,9 @@ How do we translate the intangible experience of mood into something we can hear
 The app invites users to log their momentary mood once per day within a randomly generated one-hour window, documenting their emotional state through structured prompts designed for sonic generation. Their written reflections are transformed into AI-generated sounds using various musical and ambient labels, but these sounds remain unheard until the next day's entry is complete. This gap in time allows the generated sound to be encountered fresh, without the pressure of matching preconceived sonic expectations.
 
 ---
+### Strengthening Personal Relationships To Sound With The Daily Sonification Journal
+by *Catelyn Clevenger*
+
+Sonic reflection is a component of sonic thinking that deepens personal connections between sound and memory.  While various tools for visual and tactile reflection exist, such as journaling and scrapbooking, sonic reflection tools often serve to supplement these methods, if implemented at all.  The Daily Sonification web app is a platform designed to cultivate sonic reflection habits by guiding users to construct personalized soundscapes based on their daily experiences.  The web app incorporates progression features, allowing users to have more control over their resulting sonifications over time.  Users can relisten to their sonifications in a similar way to how they might reread a journal entry.  Inspirations for this project include popular music games, such as "Incredibox" and "My Singing Monsters," that lower the barriers to sound design.
+
+---
