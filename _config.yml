@@ -6,4 +6,4 @@ markdown: kramdown
 plugins:
   - jekyll-relative-links
   - jekyll-optional-front-matter
-baseurl: "/Resonate-Data-Lab-Website-STRUCTURE"
+baseurl: "/Resonate-Data-Lab-Website"
