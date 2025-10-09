@@ -41,13 +41,20 @@ const audioElements = audioFiles.map(file => {
   return audio;
 });
 
+
 // Function to play all hidden audio
 function playAllAudio() {
   audioElements.forEach(audio => {
     audio.volume = 1;
-    audio.play().catch(() => {}); // ignore autoplay errors
+    audio.muted = true; // allows autoplay
+    audio.play().then(() => {
+      audio.muted = false; // unmute after playing starts
+    }).catch((err) => {
+      console.warn("Audio autoplay blocked:", err);
+    });
   });
 }
+
 
 // Initialize site after DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
