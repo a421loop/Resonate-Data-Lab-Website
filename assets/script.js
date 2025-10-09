@@ -32,47 +32,99 @@ const audioFiles = [
   "recorder sound for gif.wav"
 ];
 
+let audioElements = [];
 // Initialize site after DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   const tapeIntro = document.getElementById('tapeIntro');
   const mainSite = document.getElementById('mainSite');
-  
-  // hidden audio elements
+
+
+  // audio elements fixed
   const audioContainer = document.getElementById('hiddenAudioContainer');
-  const audioElements = audioFiles.map(file => {
-    const audio = document.createElement('audio');
-    audio.src = `/assets/automatic-randomised-sounds/${file}`;
-    audio.preload = 'auto';
-    audio.muted = true; 
-    audioContainer.appendChild(audio);
-    return audio;
-  });
   
+  if (audioContainer) {
+    audioElements = audioFiles.map(file => {
+      const audio = document.createElement('audio');
+      audio.src = `/assets/automatic-randomised-sounds/${file}`;
+      audio.preload = 'auto';
+      audio.loop = true; // 🚩 ADD THIS - Loop the sounds
+      audio.volume = 0.5; // 🚩 ADD THIS - Set to 50% volume, adjust as needed
+      audioContainer.appendChild(audio);
+      return audio;
+    });
+  }
    // Function to play all hidden audio
   function playAllAudio() {
-    audioElements.forEach(audio => {
-      audio.play().then(() => { audio.muted = false; }).catch(() => {});
+    console.log('Attempting to play audio...');
+    audioElements.forEach((audio, index) => {
+      audio.play()
+        .then(() => { 
+          console.log(`Audio ${index + 1} playing successfully`);
+        })
+        .catch(error => {
+          console.error(`Audio ${index + 1} failed to play:`, error);
+        });
     });
   }
 
+          
   // start the content and the audio
-  function startSite() {
-    mainSite.classList.add('visible'); 
-    randomizeManifesto(); 
-    playAllAudio(); 
+  function showEnterButton() {
+    if (tapeIntro) return;
+
+    tapeIntro.innerHTML = `
+      <img src="/Resonate-Data-Lab-Website/assets/tape-animated.gif" alt="Animated cassette tape" class="tape-gif">
+      <div class="intro-text" style="margin-bottom: 2rem;">click anywhere to enter...</div>
+      <button class="start-btn" id="startBtn" style="
+        background: var(--accent);
+        color: var(--primary);
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      ">Click to Enter</button>
+    `;
     
+     const startBtn = document.getElementById('startBtn');
+    
+    // 🚩 ADD THESE - Hover effects for the button
+    startBtn.addEventListener('mouseenter', () => {
+      startBtn.style.background = 'var(--orange)';
+      startBtn.style.transform = 'translateY(-2px)';
+    });
+    
+    startBtn.addEventListener('mouseleave', () => {
+      startBtn.style.background = 'var(--accent)';
+      startBtn.style.transform = 'translateY(0)';
+    });
+    
+    // 🚩 THIS IS THE KEY - Audio plays AFTER user clicks
+    startBtn.addEventListener('click', () => {
+      tapeIntro.classList.add('hidden');
+      setTimeout(() => {
+        mainSite.classList.add('visible');
+        randomizeManifesto();
+        playAllAudio(); // 🚩 CRITICAL - Audio will work here because of user interaction!
+      }, 500);
+    });
   }
 
+  // 🚩 REPLACE YOUR entire intro/startSite logic with this:
   if (tapeIntro) {
+    // Show GIF for 3 seconds, then show button
     setTimeout(() => {
-      tapeIntro.classList.add('hidden');
-      setTimeout(startSite, 1000); 
-    }, 3000); // change the gif duration later
+      showEnterButton(); // 🚩 Call new function instead of startSite
+    }, 3000);
   } else {
-    startSite(); 
+    // No intro, just show main site
+    mainSite.classList.add('visible');
+    randomizeManifesto();
   }
 });
-
 
 // Navigation toggle
 function toggleMenu() {
@@ -99,7 +151,7 @@ function randomizeManifesto() {
 // Rotate manifesto every 30 seconds
 setInterval(randomizeManifesto, 30000);
 
-// Audio play/pause button (if you keep a manual button)
+// Audio play/pause button (for manual controls if needed)
 function playAudio(audioId) {
   const audio = document.getElementById(audioId);
   const button = event.target;
@@ -124,7 +176,13 @@ function playAudio(audioId) {
 function toggleMute() {
   const muteBtn = document.getElementById('muteToggle');
   const isMuted = muteBtn.classList.toggle('muted');
-  document.querySelectorAll('audio').forEach(a => a.muted = isMuted);
+  
+  // Mute/unmute all audio elements
+  audioElements.forEach(audio => {
+    audio.muted = isMuted;
+  });
+  
+  console.log(isMuted ? 'Audio muted' : 'Audio unmuted');
 }
 
 console.log('Resonate Data Lab site loaded.');
