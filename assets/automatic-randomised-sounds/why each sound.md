@@ -1,6 +1,8 @@
 format:
 name 
 - tag why
+
+-----
 200101_001 - brandon and prof W-B talking about setting up a recorder.WAV
 - team, recording setup, team
 
