@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function showEnterButton() {
     tapeIntro.innerHTML = `
       <img src="/Resonate-Data-Lab-Website/assets/tape-animated.gif" alt="Animated cassette tape" class="tape-gif">
-      <div class="intro-text" style="margin-bottom: 2rem;">click anywhere to enter...</div>
+      <div class="intro-text" style="margin-bottom: 2rem;">preparing a sonic world for you</div>
       <button class="start-btn" id="startBtn" style="
         background: var(--accent);
         color: var(--primary);
