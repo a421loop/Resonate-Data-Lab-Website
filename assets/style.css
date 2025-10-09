@@ -20,7 +20,6 @@
 
 body {
   cursor: url('/assets/tape-frame.png') 16 16, auto;
-}
   font-family: 'Inter', sans-serif;
   background: var(--white);
   color: var(--primary);
