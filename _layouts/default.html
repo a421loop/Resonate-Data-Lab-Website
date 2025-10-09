@@ -39,6 +39,14 @@
         <a href="{{ '/contribute/' | relative_url }}" class="nav-link {% if page.url contains '/contribute' %}active{% endif %}">Contribute</a>
         <a href="{{ '/toolbox/' | relative_url }}" class="nav-link {% if page.url contains '/toolbox' %}active{% endif %}">Resources</a>
       </nav>
+        <!-- Mute / Unmute Button -->
+        <div id="muteToggle" class="mute-toggle-vertical" onclick="toggleMute()">
+          <span class="letter">M</span>
+          <span class="letter">U</span>
+          <span class="letter">T</span>
+          <span class="letter">E</span>
+          <span class="letter">D</span>
+        </div>
       </div>
     </header>
 
