@@ -32,50 +32,47 @@ const audioFiles = [
   "recorder sound for gif.wav"
 ];
 
-const audioContainer = document.getElementById('hiddenAudioContainer');
-const audioElements = audioFiles.map(file => {
-  const audio = document.createElement('audio');
-  audio.src = `/assets/automatic-randomised-sounds/${file}`;
-  audio.preload = 'auto';
-  audioContainer.appendChild(audio);
-  return audio;
-});
-
-
-// Function to play all hidden audio
-function playAllAudio() {
-  audioElements.forEach(audio => {
-    audio.volume = 1;
-    audio.muted = true; // allows autoplay
-    audio.play().then(() => {
-      audio.muted = false; // unmute after playing starts
-    }).catch((err) => {
-      console.warn("Audio autoplay blocked:", err);
-    });
-  });
-}
-
-
 // Initialize site after DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   const tapeIntro = document.getElementById('tapeIntro');
   const mainSite = document.getElementById('mainSite');
+  
+  // hidden audio elements
+  const audioContainer = document.getElementById('hiddenAudioContainer');
+  const audioElements = audioFiles.map(file => {
+    const audio = document.createElement('audio');
+    audio.src = `/assets/automatic-randomised-sounds/${file}`;
+    audio.preload = 'auto';
+    audio.muted = true; 
+    audioContainer.appendChild(audio);
+    return audio;
+  });
+  
+   // Function to play all hidden audio
+  function playAllAudio() {
+    audioElements.forEach(audio => {
+      audio.play().then(() => { audio.muted = false; }).catch(() => {});
+    });
+  }
 
+  // start the content and the audio
   function startSite() {
-    mainSite.classList.add('visible');
-    randomizeManifesto();
-    playAllAudio();
+    mainSite.classList.add('visible'); 
+    randomizeManifesto(); 
+    playAllAudio(); 
+    
   }
 
   if (tapeIntro) {
     setTimeout(() => {
       tapeIntro.classList.add('hidden');
-      setTimeout(startSite, 1000);
-    }, 3000);
+      setTimeout(startSite, 1000); 
+    }, 3000); // change the gif duration later
   } else {
-    startSite();
+    startSite(); 
   }
 });
+
 
 // Navigation toggle
 function toggleMenu() {
