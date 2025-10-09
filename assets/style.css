@@ -442,20 +442,24 @@ footer {
   .card {
     padding: 1.5rem;
   }
-  /* --- Mute / Unmute Button --- */
-.mute-toggle {
+  .mute-toggle-vertical {
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  user-select: none;
+  margin-left: 1rem;
   font-family: 'Space Grotesk', sans-serif;
-  margin: 1rem auto;
-  transition: transform 0.2s ease;
+  font-size: 1rem;
+  user-select: none;
 }
 
-.mute-toggle:hover {
-  transform: scale(1.05);
+.mute-toggle-vertical .letter {
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.mute-toggle-vertical:hover .letter {
+  color: var(--secondary);
 }
 
 .letters {
