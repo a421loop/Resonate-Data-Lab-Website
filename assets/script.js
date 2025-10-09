@@ -17,69 +17,71 @@ const manifestoQuotes = [
   { text: "Sound is memories. Sound is warning. Sound is awareness.", author: "Liuyi" }
 ];
 
-// Initialize site
+// Audio files for hidden playback
+const audioFiles = [
+  "200101_001 - brandon and prof W-B talking about setting up a recorder.WAV",
+  "Calm breathing_slow.wav",
+  "Crowd Noise1.mp3",
+  "Door - building_slow.wav",
+  "Echo Elephants.wav",
+  "Thank-You-Brandon-Arthur.wav",
+  "Travelling the Stars.wav",
+  "Under water - ask permission.wav",
+  "dancing sound 20250625-081510_slow.wav",
+  "fruit_order_final CTUIR ask permissions.wav",
+  "recorder sound for gif.wav"
+];
+
+const audioContainer = document.getElementById('hiddenAudioContainer');
+const audioElements = audioFiles.map(file => {
+  const audio = document.createElement('audio');
+  audio.src = `/assets/automatic-randomised-sounds/${file}`;
+  audio.preload = 'auto';
+  audioContainer.appendChild(audio);
+  return audio;
+});
+
+// Function to play all hidden audio
+function playAllAudio() {
+  audioElements.forEach(audio => {
+    audio.volume = 1;
+    audio.play().catch(() => {}); // ignore autoplay errors
+  });
+}
+
+// Initialize site after DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  // Show cassette intro for 3 seconds (only on homepage)
   const tapeIntro = document.getElementById('tapeIntro');
+  const mainSite = document.getElementById('mainSite');
+
+  function startSite() {
+    mainSite.classList.add('visible');
+    randomizeManifesto();
+    playAllAudio();
+  }
+
   if (tapeIntro) {
     setTimeout(() => {
       tapeIntro.classList.add('hidden');
-      setTimeout(() => {
-        document.getElementById('mainSite').classList.add('visible');
-        // Initialize with a random manifesto quote
-        randomizeManifesto();
-      }, 1000);
+      setTimeout(startSite, 1000);
     }, 3000);
   } else {
-    // For other pages, show immediately
-    document.getElementById('mainSite').classList.add('visible');
-    randomizeManifesto();
+    startSite();
   }
 });
 
-// Navigation functions
+// Navigation toggle
 function toggleMenu() {
   const nav = document.getElementById('mainNav');
   nav.classList.toggle('open');
 }
 
-// Audio functions
-function playAudio(audioId) {
-  const audio = document.getElementById(audioId);
-  const button = event.target;
-  
-  if (audio.paused) {
-    audio.play();
-    button.classList.add('playing');
-    button.innerHTML = '⏸ Press here to pause';
-  } else {
-    audio.pause();
-    button.classList.remove('playing');
-    button.innerHTML = '▶ Press here to play';
-  }
-  
-  audio.addEventListener('ended', () => {
-    button.classList.remove('playing');
-    button.innerHTML = '▶ Press here to play';
-  });
-}
-
-
+// Manifesto randomization
 function randomizeManifesto() {
   const textElement = document.getElementById('manifestoText');
   const authorElement = document.getElementById('manifestoAuthor');
-
   if (!textElement || !authorElement) return;
 
-
-
-
-function randomizeManifesto() {
-  const textElement = document.getElementById('manifestoText');
-  const authorElement = document.getElementById('manifestoAuthor');
-
-  if (!textElement || !authorElement) return;
-    // pick a random quote
   const randomQuote = manifestoQuotes[Math.floor(Math.random() * manifestoQuotes.length)];
 
   textElement.classList.remove('show');
@@ -90,18 +92,35 @@ function randomizeManifesto() {
   }, 500);
 }
 
-// call once at start
-randomizeManifesto();
-
-// set to rotate every 30 seconds
+// Rotate manifesto every 30 seconds
 setInterval(randomizeManifesto, 30000);
 
-}
-  
-console.log('Resonate Data Lab site loaded.');
+// Audio play/pause button (if you keep a manual button)
+function playAudio(audioId) {
+  const audio = document.getElementById(audioId);
+  const button = event.target;
 
+  if (audio.paused) {
+    audio.play();
+    button.classList.add('playing');
+    button.innerHTML = '⏸ Press here to pause';
+  } else {
+    audio.pause();
+    button.classList.remove('playing');
+    button.innerHTML = '▶ Press here to play';
+  }
+
+  audio.addEventListener('ended', () => {
+    button.classList.remove('playing');
+    button.innerHTML = '▶ Press here to play';
+  });
+}
+
+// Mute toggle for all audio
 function toggleMute() {
   const muteBtn = document.getElementById('muteToggle');
   const isMuted = muteBtn.classList.toggle('muted');
   document.querySelectorAll('audio').forEach(a => a.muted = isMuted);
 }
+
+console.log('Resonate Data Lab site loaded.');
