@@ -442,4 +442,44 @@ footer {
   .card {
     padding: 1.5rem;
   }
+  /* --- Mute / Unmute Button --- */
+.mute-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 1rem auto;
+  transition: transform 0.2s ease;
+}
+
+.mute-toggle:hover {
+  transform: scale(1.05);
+}
+
+.letters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 48px;
+  letter-spacing: 2px;
+  transition: all 0.4s ease;
+}
+
+.letters span {
+  display: block;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.status {
+  margin-top: 0.5rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--medium-gray);
+}
+
+.mute-toggle.unmuted .status {
+  color: var(--secondary);
+}
 }
