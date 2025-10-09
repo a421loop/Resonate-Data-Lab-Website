@@ -442,48 +442,42 @@ footer {
   .card {
     padding: 1.5rem;
   }
-  .mute-toggle-vertical {
+  /* Vertical Mute Button */
+.mute-vertical {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
-  margin-left: 1rem;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1rem;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  z-index: 1000;
   user-select: none;
 }
 
-.mute-toggle-vertical .letter {
+.mute-vertical .letter {
   display: block;
-  transition: color 0.2s ease;
+  color: var(--primary);
+  transition: color 0.3s ease;
 }
 
-.mute-toggle-vertical:hover .letter {
+.mute-vertical:hover .letter {
   color: var(--secondary);
 }
 
-.letters {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 48px;
-  letter-spacing: 2px;
-  transition: all 0.4s ease;
+.mute-circle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  margin-top: 8px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.letters span {
-  display: block;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.status {
-  margin-top: 0.5rem;
-  font-size: 14px;
-  text-transform: uppercase;
-  color: var(--medium-gray);
-}
-
-.mute-toggle.unmuted .status {
-  color: var(--secondary);
-}
+.muted .mute-circle {
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
