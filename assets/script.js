@@ -99,3 +99,9 @@ setInterval(randomizeManifesto, 30000);
 }
   
 console.log('Resonate Data Lab site loaded.');
+
+function toggleMute() {
+  const muteBtn = document.getElementById('muteToggle');
+  const isMuted = muteBtn.classList.toggle('muted');
+  document.querySelectorAll('audio').forEach(a => a.muted = isMuted);
+}
