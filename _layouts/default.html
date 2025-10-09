@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <!-- Vertical Mute / Unmute Button-->
   <div id="muteToggle" class="mute-vertical" onclick="toggleMute()">
@@ -21,7 +22,6 @@
 
   <!-- Cassette Tape Intro -->
   {% if page.url == "/" %}
-  
   <div class="tape-intro" id="tapeIntro">
     <img src="{{ '/assets/tape-animated.gif' | relative_url }}" alt="Animated cassette tape" class="tape-gif">
     <div class="intro-text">preparing a sonic world for you...</div>
@@ -41,13 +41,13 @@
           </svg>
         </button>
          
-       <nav id="mainNav">
-        <a href="{{ '/About/' | relative_url }}" class="nav-link {% if page.url contains '/About' %}active{% endif %}">About</a>
-        <a href="{{ '/Team/' | relative_url }}" class="nav-link {% if page.url contains '/Team' %}active{% endif %}">Team</a>
-        <a href="{{ '/Projects/' | relative_url }}" class="nav-link {% if page.url contains '/Projects' %}active{% endif %}">Projects</a>
-        <a href="{{ '/contribute/' | relative_url }}" class="nav-link {% if page.url contains '/contribute' %}active{% endif %}">Contribute</a>
-        <a href="{{ '/toolbox/' | relative_url }}" class="nav-link {% if page.url contains '/toolbox' %}active{% endif %}">Resources</a>
-      </nav>
+        <nav id="mainNav">
+          <a href="{{ '/About/' | relative_url }}" class="nav-link {% if page.url contains '/About' %}active{% endif %}">About</a>
+          <a href="{{ '/Team/' | relative_url }}" class="nav-link {% if page.url contains '/Team' %}active{% endif %}">Team</a>
+          <a href="{{ '/Projects/' | relative_url }}" class="nav-link {% if page.url contains '/Projects' %}active{% endif %}">Projects</a>
+          <a href="{{ '/contribute/' | relative_url }}" class="nav-link {% if page.url contains '/contribute' %}active{% endif %}">Contribute</a>
+          <a href="{{ '/toolbox/' | relative_url }}" class="nav-link {% if page.url contains '/toolbox' %}active{% endif %}">Resources</a>
+        </nav>
       </div>
     </header>
 
@@ -59,6 +59,7 @@
       <p>&copy; made with care and coffee by the RDL Summer'25 Team</p>
     </footer>
   </div>
+
   <script src="{{ '/assets/script.js' | relative_url }}"></script>
 </body>
-</html>
+  
