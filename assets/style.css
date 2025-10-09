@@ -19,7 +19,7 @@
 }
 
 body {
-  cursor: url('/assets/tape-animated.gif') 16 16, auto;
+  cursor: url('{{ "/assets/tape-frame.png" | relative_url }}') 16 16, auto;
   font-family: 'Inter', sans-serif;
   background: var(--white);
   color: var(--primary);
