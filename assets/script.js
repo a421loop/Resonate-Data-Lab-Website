@@ -45,10 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (audioContainer) {
     audioElements = audioFiles.map(file => {
       const audio = document.createElement('audio');
-      audio.src = `/assets/automatic-randomised-sounds/${file}`;
+      audio.src = `/Resonate-Data-Lab-Website/assets/automatic-randomised-sounds/${file}`;
       audio.preload = 'auto';
-      audio.loop = true; // 🚩 ADD THIS - Loop the sounds
-      audio.volume = 0.5; // 🚩 ADD THIS - Set to 50% volume, adjust as needed
+      audio.loop = true; // Loop the sounds
+      audio.volume = 0.5; // Set to 50% volume, adjust as needed
       audioContainer.appendChild(audio);
       return audio;
     });
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
      const startBtn = document.getElementById('startBtn');
     
-    // 🚩 ADD THESE - Hover effects for the button
+    // Hover effects for the button
     startBtn.addEventListener('mouseenter', () => {
       startBtn.style.background = 'var(--orange)';
       startBtn.style.transform = 'translateY(-2px)';
@@ -100,22 +100,21 @@ document.addEventListener('DOMContentLoaded', function() {
       startBtn.style.transform = 'translateY(0)';
     });
     
-    // 🚩 THIS IS THE KEY - Audio plays AFTER user clicks
+    // THE KEY - Audio plays AFTER user clicks
     startBtn.addEventListener('click', () => {
       tapeIntro.classList.add('hidden');
       setTimeout(() => {
         mainSite.classList.add('visible');
         randomizeManifesto();
-        playAllAudio(); // 🚩 CRITICAL - Audio will work here because of user interaction!
+        playAllAudio(); //Audio will work here because of user interaction!
       }, 500);
     });
   }
 
-  // 🚩 REPLACE YOUR entire intro/startSite logic with this:
   if (tapeIntro) {
     // Show GIF for 3 seconds, then show button
     setTimeout(() => {
-      showEnterButton(); // 🚩 Call new function instead of startSite
+      showEnterButton(); // 
     }, 3000);
   } else {
     // No intro, just show main site
