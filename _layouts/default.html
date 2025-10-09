@@ -11,15 +11,14 @@
 </head>
 
 <body>
-  <!-- Vertical Mute / Unmute Button-->
-  <div id="muteToggle" class="mute-vertical" onclick="toggleMute()">
-    <span class="letter">M</span>
-    <span class="letter">U</span>
-    <span class="letter">T</span>
-    <span class="letter">E</span>
-    <span class="letter">D</span>
-  </div>
-
+  <!-- Vertical Mute Button -->
+<div id="muteToggle" class="mute-vertical" onclick="toggleMute()">
+  <span class="letter">M</span>
+  <span class="letter">U</span>
+  <span class="letter">T</span>
+  <span class="letter">E</span>
+  <div class="mute-circle" id="muteCircle"></div>
+</div>
   <!-- Cassette Tape Intro -->
   {% if page.url == "/" %}
   <div class="tape-intro" id="tapeIntro">
