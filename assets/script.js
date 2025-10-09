@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
           
   // start the content and the audio
   function showEnterButton() {
-    if (tapeIntro) return;
+    if (!tapeIntro) return;
 
     tapeIntro.innerHTML = `
       <img src="/Resonate-Data-Lab-Website/assets/tape-animated.gif" alt="Animated cassette tape" class="tape-gif">
