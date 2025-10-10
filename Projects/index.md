@@ -24,7 +24,7 @@ Sonic reflection is a component of sonic thinking that deepens personal connecti
 
 ---
 ### Extending Sound Beyond the Ear
-by * Deo Rubangakene *
+by *Deo Rubangakene*
 
 Throughout the summer and the fall, I was intrigued and passionately exploring the idea of how we can interact with sound as a physical tangible space or object. Thinking of this through the design of workshops, lesson plans, that build self sonic portraits to listening benches. Sound is an intimate interaction that I find can be instrumental to bringing people together and building deeper connections in a world that thrives on authentic community. There is bigger and more sound than music. How do we perceive  silence, how do we develop habits and individual rituals with sound. My project seeks to answer these questions and push beyond the rigid hallmarks of sound as survillences and signaling but how, where and when to actively  engage with sound. 
 
