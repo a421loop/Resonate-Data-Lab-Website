@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
       audio.src = `/Resonate-Data-Lab-Website/assets/automatic-randomised-sounds/${file}`;
       audio.preload = 'auto';
       audio.loop = true; // Loop the sounds
-      audio.volume = 0.5; // Set to 50% volume, adjust as needed
+      audio.volume = 0.2; // Set to 50% volume, adjust as needed
       audioContainer.appendChild(audio);
       return audio;
     });
