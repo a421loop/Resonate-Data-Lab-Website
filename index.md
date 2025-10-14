@@ -30,7 +30,7 @@ We explore how to use data as a creative material. Our lab draws from the tradit
 #### Get Involved
 
 Interested in learning more about our lab or joining our team?  
-Email [Jordan Wirfs-Brock](mailto:wirfsbrj@whitman.edu).  
+Email Jordan Wirfs-Brock at wirfsbrj@whitman.edu
 
 
 ## Explore Resources
