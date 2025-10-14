@@ -35,5 +35,5 @@ Email [Jordan Wirfs-Brock](mailto:wirfsbrj@whitman.edu).
 
 ## Explore Resources
 
-Check out some of [our favorite **resources** ](https://a421loop.github.io/sound-resources-page/). 
- 
+Check out some of [**our favorite resources** ](https://a421loop.github.io/sound-resources-page/). 
+
