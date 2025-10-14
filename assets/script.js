@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 /*
    // Function to play all hidden audio
-  function playAllAudio() {
+  function playRandomAudio() {
     console.log('Attempting to play audio...');
     audioElements.forEach((audio, index) => {
       audio.play()
