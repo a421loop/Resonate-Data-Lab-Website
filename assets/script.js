@@ -53,6 +53,16 @@ document.addEventListener('DOMContentLoaded', function() {
       return audio;
     });
   }
+
+  function playRandomAudio() {
+  if (audioElements.length === 0) return;
+  const random = audioElements[Math.floor(Math.random() * audioElements.length)];
+  random.currentTime = 0;
+  random.play();
+
+  random.onended = playRandomAudio;
+}
+/*
    // Function to play all hidden audio
   function playAllAudio() {
     console.log('Attempting to play audio...');
@@ -66,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
   }
-
+*/
           
   // start the content and the audio
   function showEnterButton() {
