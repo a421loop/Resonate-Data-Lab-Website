@@ -54,9 +54,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-      
-   // Function to play all hidden audio
-  function playAllAudio() {
+   let currentAudio = null;
+
+function playRandomAudio() {
+  if (!audioElements.length) return;
+
+  // Stop previous sound
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+  }
+
+  // Pick a new one
+  const randomIndex = Math.floor(Math.random() * audioElements.length);
+  currentAudio = audioElements[randomIndex];
+
+  currentAudio.play().catch(err => console.error("Audio failed:", err));
+
+  // When it ends, play another random one
+  currentAudio.onended = playRandomAudio;
+}   
+   // Function to play all hidden audio all at once 
+  /* function playAllAudio() {
     console.log('Attempting to play audio...');
     audioElements.forEach((audio, index) => {
       audio.play()
@@ -68,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
   }
-    
+    */
   // start the content and the audio
   function showEnterButton() {
     tapeIntro.innerHTML = `
@@ -108,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(() => {
         mainSite.classList.add('visible');
         randomizeManifesto();
-        playAllAudio();
+        playRandomAudio();
       }, 500);
     });
   }
