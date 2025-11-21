@@ -36,9 +36,11 @@ let audioElements = [];
 // Initialize site after DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   // Only run on homepage
-  /* if (!window.location.pathname.match(/^\/Resonate-Data-Lab-Website\/?$/)) {
+  /* 
+  if (!window.location.pathname.match(/^\/Resonate-Data-Lab-Website\/?$/)) {
     return; // stop everything
-} */
+    } 
+    */
   const tapeIntro = document.getElementById('tapeIntro');
   const mainSite = document.getElementById('mainSite');
 
