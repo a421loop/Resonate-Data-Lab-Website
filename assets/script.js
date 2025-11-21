@@ -105,7 +105,7 @@ function playRandomAudio() {
         font-size: 1.2rem;
         cursor: pointer;
         transition: all 0.2s ease;
-      ">Click to Enter</button>
+      ">let me in</button>
     `;
     
      const startBtn = document.getElementById('startBtn');
