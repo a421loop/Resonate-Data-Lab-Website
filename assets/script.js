@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(() => {
         mainSite.classList.add('visible');
         randomizeManifesto();
-        playAllAudio(); //Audio will work here because of user interaction!
+        playRandomAudio();
       }, 500);
     });
   }
