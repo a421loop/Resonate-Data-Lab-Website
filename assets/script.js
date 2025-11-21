@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // start the content and the audio
   function showEnterButton() {
     tapeIntro.innerHTML = `
-      <img src="{{ '/assets/tape-animated.gif' | relative_url }}" 
-          alt="Animated cassette tape" class="tape-gif">
+      <img src="/Resonate-Data-Lab-Website/assets/tape-animated.gif"
+    alt="Animated cassette tape" class="tape-gif">
       <div class="intro-text" style="margin-bottom: 2rem;">preparing a sonic world for you</div>
       <button class="start-btn" id="startBtn" style="
         background: var(--accent);
