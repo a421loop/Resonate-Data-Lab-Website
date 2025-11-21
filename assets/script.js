@@ -54,18 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-/*  function playRandomAudio() {
-  if (audioElements.length === 0) return;
-  const random = audioElements[Math.floor(Math.random() * audioElements.length)];
-  random.currentTime = 0;
-  random.play();
-
-  random.onended = playRandomAudio;
-}
-*/
       
    // Function to play all hidden audio
-  function playRandomAudio() {
+  function playAllAudio() {
     console.log('Attempting to play audio...');
     audioElements.forEach((audio, index) => {
       audio.play()
@@ -117,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(() => {
         mainSite.classList.add('visible');
         randomizeManifesto();
-        playRandomAudio();
+        playAllAudio();
       }, 500);
     });
   }
