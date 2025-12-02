@@ -33,17 +33,11 @@ const audioFiles = [
 ];
 
 let audioElements = [];
+
 // Initialize site after DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  // Only run on homepage
-  /* 
-  if (!window.location.pathname.match(/^\/Resonate-Data-Lab-Website\/?$/)) {
-    return; // stop everything
-    } 
-    */
-  const tapeIntro = document.getElementById('tapeIntro');
+  const tapeIntro = document.getElementById('tapeIntro'); // only exists on homepage
   const mainSite = document.getElementById('mainSite');
-
 
   // audio elements fixed
   const audioContainer = document.getElementById('hiddenAudioContainer');
@@ -54,51 +48,38 @@ document.addEventListener('DOMContentLoaded', function() {
       audio.src = `/Resonate-Data-Lab-Website/assets/automatic-randomised-sounds/${file}`;
       audio.preload = 'auto';
       audio.loop = true; // Loop the sounds
-      audio.volume = 0.2; // Set to 50% volume, adjust as needed
+      audio.volume = 0.2; // Set to 20% volume, adjust as needed
       audioContainer.appendChild(audio);
       return audio;
     });
   }
 
-   let currentAudio = null;
+  let currentAudio = null;
 
-function playRandomAudio() {
-  if (!audioElements.length) return;
+  function playRandomAudio() {
+    if (!audioElements.length) return;
 
-  // Stop previous sound
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio.currentTime = 0;
+    // Stop previous sound
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+
+    // Pick a new one
+    const randomIndex = Math.floor(Math.random() * audioElements.length);
+    currentAudio = audioElements[randomIndex];
+
+    currentAudio.play().catch(err => console.error("Audio failed:", err));
+
+    // When it ends, play another random one
+    currentAudio.onended = playRandomAudio;
   }
 
-  // Pick a new one
-  const randomIndex = Math.floor(Math.random() * audioElements.length);
-  currentAudio = audioElements[randomIndex];
-
-  currentAudio.play().catch(err => console.error("Audio failed:", err));
-
-  // When it ends, play another random one
-  currentAudio.onended = playRandomAudio;
-}   
-   // Function to play all hidden audio all at once 
-  /* function playAllAudio() {
-    console.log('Attempting to play audio...');
-    audioElements.forEach((audio, index) => {
-      audio.play()
-        .then(() => { 
-          console.log(`Audio ${index + 1} playing successfully`);
-        })
-        .catch(error => {
-          console.error(`Audio ${index + 1} failed to play:`, error);
-        });
-    });
-  }
-    */
   // start the content and the audio
   function showEnterButton() {
     tapeIntro.innerHTML = `
       <img src="/Resonate-Data-Lab-Website/assets/tape-animated.gif"
-    alt="Animated cassette tape" class="tape-gif">
+           alt="Animated cassette tape" class="tape-gif">
       <div class="intro-text" style="margin-bottom: 2rem;">preparing a sonic world for you</div>
       <button class="start-btn" id="startBtn" style="
         background: var(--accent);
@@ -114,7 +95,7 @@ function playRandomAudio() {
       ">let me in</button>
     `;
     
-     const startBtn = document.getElementById('startBtn');
+    const startBtn = document.getElementById('startBtn');
     
     // Hover effects for the button
     startBtn.addEventListener('mouseenter', () => {
@@ -127,11 +108,13 @@ function playRandomAudio() {
       startBtn.style.transform = 'translateY(0)';
     });
     
-    // THE KEY - Audio plays AFTER user clicks
+    // KEY - Audio plays AFTER user clicks
     startBtn.addEventListener('click', () => {
       tapeIntro.classList.add('hidden');
       setTimeout(() => {
-        mainSite.classList.add('visible');
+        if (mainSite) {
+          mainSite.classList.add('visible');
+        }
         randomizeManifesto();
         playRandomAudio();
       }, 500);
@@ -139,13 +122,15 @@ function playRandomAudio() {
   }
 
   if (tapeIntro) {
-    // Show GIF for 3 seconds, then show button
+    // Homepage: show GIF for 3 seconds, then show button
     setTimeout(() => {
-      showEnterButton(); // 
+      showEnterButton();
     }, 3000);
   } else {
-    // No intro, just show main site
-    mainSite.classList.add('visible');
+    // Non-home pages: no intro, just show main site
+    if (mainSite) {
+      mainSite.classList.add('visible');
+    }
     randomizeManifesto();
   }
 });
