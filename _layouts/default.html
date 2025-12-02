@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,24 +11,22 @@
 </head>
 
 <body>
-  <div id="tapeIntro" class="tape-intro">
-  <!--
-    <img src="/Resonate-Data-Lab-Website/assets/tape-animated.gif" 
-       alt="Animated cassette tape" 
-       class="tape-gif">
-      <div class="intro-text">preparing a sonic world for you</div>
+  {% if page.url == '/' %}
+  <!-- Tape intro ONLY on homepage -->
+  <div id="tapeIntro" class="tape-intro"></div>
+  {% endif %}
 
-    --> 
-</div> 
+  <!-- Hidden audio elements container -->
   <div id="hiddenAudioContainer" style="display:none;"></div>
+
   <!-- Vertical Mute Button -->
   <div id="muteToggle" class="mute-vertical" onclick="toggleMute()">
-  <span class="letter">M</span>
-  <span class="letter">U</span>
-  <span class="letter">T</span>
-  <span class="letter">E</span>
-  <div class="mute-circle" id="muteCircle"></div>
-</div>
+    <span class="letter">M</span>
+    <span class="letter">U</span>
+    <span class="letter">T</span>
+    <span class="letter">E</span>
+    <div class="mute-circle" id="muteCircle"></div>
+  </div>
 
   <!-- Main Site -->
   <div class="main-site" id="mainSite">
@@ -65,4 +62,4 @@
 
   <script src="{{ '/assets/script.js' | relative_url }}"></script>
 </body>
-  
+</html>
